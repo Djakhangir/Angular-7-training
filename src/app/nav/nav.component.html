@@ -1,0 +1,12 @@
+<header>    <!--Indicates that is this is the header of the page-->
+    <div class="container"> <!-- this will help us to shrink main layout to about 80% from the browser edge  -->
+      <a routerLink="/" class="logo">{{ appTitle }}</a> <!--to bring our property to display use string interpolation and define it in ts file-->
+      <nav>
+        <ul>
+          <li><a routerLink="/">Home</a></li> <!--href attribute won't work that is why we use routerLink which is -->
+          <li><a routerLink="/about">About</a></li> <!--simple angular attribute to direct to certain component -->
+          <li><a routerLink="/contact">Contact us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>

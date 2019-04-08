@@ -1,0 +1,51 @@
+
+<!--Class, Property Binding-->
+
+<h1 [class.gray]="h1Style">Bind One Class</h1> <!--if the h1Style is true in then gray class will be applied to home, boolean is defined in ts file; -->
+
+<!--What if we want to apply multiple classes, for that we use ngClass-->
+<h2 [ngClass]="{
+  'gray': h1Style, 
+  'large': !h1Style
+}">Bind Multiple Classes</h2>
+
+<!--the same if we want manipulate with style file inline we use [style.color]="h1Style ? 'gray' : 'black'" 
+    or we can selecet mulptiple styles like [ngStyle]="{
+      'color': h1Style ? 'gray' : 'black'
+      'background': !h1Style ? 'purple' : 'red'
+    }" -->
+<!--Event Binding, below is list of different events to try:
+
+(focus)="myMethod()"
+(blur)="myMethod()" 
+(submit)="myMethod()"  
+(scroll)="myMethod()"
+
+(cut)="myMethod()"
+(copy)="myMethod()"
+(paste)="myMethod()"
+
+(keydown)="myMethod()"
+(keypress)="myMethod()"
+(keyup)="myMethod()"
+
+(mouseenter)="myMethod()"
+(mousedown)="myMethod()"
+(mouseup)="myMethod()"
+
+(click)="myMethod()"
+(dblclick)="myMethod()"
+
+(drag)="myMethod()"
+(dragover)="myMethod()"
+(drop)="myMethod()"  -->
+
+<button (click)="firstClick()">Click Me</button> <!--click in paranthesis will bind the event and Define the method firstclick() in ts-->
+<br>
+
+<ul *ngIf = "users"><!--If users has data in it then it will show this ul element and children-->
+  <li *ngFor = 'let user of users.data'> <!--iterate through the object when get it, users.data is because the information is inside users and then data property, we can see it when we conosle.log it-->
+    <img [src]="user.avatar"> <!--property bind of src to bind the users and show their avatars -->
+    <p>{{ user.first_name }} {{ user.last_name }}</p>
+  </li>
+</ul>

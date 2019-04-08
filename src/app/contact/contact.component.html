@@ -1,0 +1,38 @@
+<h1>Contact us</h1>
+
+<!--in forms instead of click we use ngSubmit method and assign the formGroup to our property in ts-->
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()"> 
+
+  <h5 *ngIf = "success"> Your form is valid!</h5> <!--this will show up only once submitted the form and success becomes true-->
+
+  <label>
+    Name:
+
+    <input type="text" formControlName="name"> <!--This includes the input value defined in ts file constructor-->
+    <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+      <!--this will show if submitted (if it is true and if there are errors-->
+      <div *ngIf="messageForm.controls.name.errors.required">Your name is required!</div> 
+      <!--this allows us to specify different messages when the name is not filled or which validation is failed-->
+
+    </div>
+  </label>
+
+  <label> <!--Instead of input field we have textarea tag and the rest is set to message -->
+      Message:
+      <textarea formControlName="message"></textarea>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+      </div>
+    </label>
+
+    <input type="submit" value="Send message" class="cta"><!--cta= call to action-->
+</form>
+
+
+<div *ngIf="submitted" class="results">
+  <strong>Name:</strong>
+  <span>{{ messageForm.controls.name.value }}</span>
+
+  <strong>Message:</strong>
+  <span>{{ messageForm.controls.message.value }}</span>
+</div>
